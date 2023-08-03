@@ -1,0 +1,6 @@
+npx create-react-app my-react-app
+npm i react-router-dom react-redux @reduxjs/toolkit
+npm i mdb-react-ui-kit
+npm i @fortawesome/fontawesome-free
+https://mdbootstrap.com/docs/react/getting-started/installation/
+https://mdbootstrap.com/docs/react/navigation/navbar
