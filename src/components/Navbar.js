@@ -9,7 +9,7 @@ import {
 import {useDispatch} from 'react-redux';
 import {getAllData} from '../features/cartSlice';
 
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -20,14 +20,14 @@ export default function App() {
       
           <MDBNavbarBrand>Navbar</MDBNavbarBrand>
           <span>
-            {/* <Link to="/"> */}
+            <Link to="/">
             All Product
-            {/* </Link> */}
+            </Link>
           </span>
           <MDBBtn color='dark' onClick={()=>dispatch(getAllData())}>
-            {/* <Link to="/cart"> */}
+            <Link to="/cart">
               Cart(0)
-            {/* </Link> */}
+            </Link>
           </MDBBtn>
      
 
