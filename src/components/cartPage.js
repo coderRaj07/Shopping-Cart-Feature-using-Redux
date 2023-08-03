@@ -64,7 +64,7 @@ const CartPage = () => {
                                                 </div>
 
                                                 <p className="text-start text-md-center">
-                                                    <strong>{data.price * data.quantity}</strong>
+                                                    <strong>{data.price}</strong>
                                                 </p>
 
                                             </div>
