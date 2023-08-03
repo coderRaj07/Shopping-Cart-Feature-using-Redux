@@ -60,6 +60,12 @@ export const cartSlice = createSlice({
 
       state.totalPrice = parseInt(totalPrice.toFixed(2));
       state.totalQuantity = totalQuantity;   
+    },
+
+
+    removeItem: (state,action) =>{
+      //use filter to show only elements of state.cart such that it doesn't show what is requested to remove
+      return state.cart = state.cart.filter((item)=>item.id!==action.payload)
     }
 
   },
@@ -82,6 +88,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart,getCartTotal } = cartSlice.actions;
+export const { addToCart,getCartTotal,removeItem } = cartSlice.actions;
 
 export default cartSlice.reducer;

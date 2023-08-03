@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import { getCartTotal } from '../features/cartSlice';
+import { getCartTotal,removeItem } from '../features/cartSlice';
 const CartPage = () => {
     const { cart, totalQuantity, totalPrice } = useSelector((state) => state.allCart)
 
@@ -39,7 +39,7 @@ const CartPage = () => {
                                                 <p>Color: blue</p>
                                                 <p>Size: M</p>
                                                 <button type="button" className="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                                                    title="Remove item">
+                                                    title="Remove item" onClick={()=>dispatch(removeItem(data.id))}>
                                                     <i className="fas fa-trash"></i>
                                                 </button>
 
