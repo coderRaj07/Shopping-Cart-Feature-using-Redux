@@ -65,7 +65,7 @@ export const cartSlice = createSlice({
 
     removeItem: (state,action) =>{
       //use filter to show only elements of state.cart such that it doesn't show what is requested to remove
-      return state.cart = state.cart.filter((item)=>item.id!==action.payload)
+      state.cart = state.cart.filter((item)=>item.id!==action.payload)
     }
 
   },
