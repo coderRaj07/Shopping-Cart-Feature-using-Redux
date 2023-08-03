@@ -30,7 +30,7 @@ export const cartSlice = createSlice({
       })
       .addCase(getAllData.fulfilled, (state, action) => {
         state.items = action.payload;
-        state.totalQuantity = state.items.length;
+        state.totalQuantity = 0;
         state.totalPrice = 0;
       })
       .addCase(getAllData.rejected, (state, action) => {
