@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import Navbar from './components/Navbar'
+import ProductCard from './components/ProductCard'
+import {useDispatch} from 'react-redux';
+import {getAllData} from './features/cartSlice';
+import React, { useEffect } from 'react';
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  // Dispatch the action when the component mounts (page loads)
+  // So that we can display data in subsequent components using useSelector()
+  useEffect(() => {
+    dispatch(getAllData());
+  }, [dispatch]); 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div>
+        <Navbar/>
+        <ProductCard/>
+      </div>
+  )
 }
 
-export default App;
+export default App
