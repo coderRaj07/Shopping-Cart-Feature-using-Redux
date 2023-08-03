@@ -60,8 +60,41 @@ export const cartSlice = createSlice({
 
       state.totalPrice = parseInt(totalPrice.toFixed(2));
       state.totalQuantity = totalQuantity;   
-    }
+    },
 
+
+    removeItem: (state,action) =>{
+      //use filter to show only elements of state.cart such that it doesn't show what is requested to remove
+      state.cart = state.cart.filter((item)=>item.id!==action.payload)
+    },
+
+    increaseItemQuantity: (state,action) =>{
+      // since state.cart is an array and each array element has the property quantity and price
+      // So to make the followiing logic work, we have to make changes in each element of cart array
+      // i.e, to loop over the entire array and make changes as reqd.
+            //  state.cart.quantity+=1;
+            //  state.cart.price += state.cart.price
+      // We can use map method
+      state.cart = state.cart.map((item)=>{
+        if(item.id===action.payload) {        //in action.payload we are taking the id from the component page itself
+          return {...item,
+            quantity: item.quantity+1,
+            price: item.price * (item.quantity + 1) }        
+        }
+        return item;
+      })
+    },
+
+    decreaseItemQuantity: (state,action) =>{
+      state.cart = state.cart.map((item)=>{
+        if(item.id===action.payload) {        //in action.payload we are taking the id from the component page itself
+          return {...item,
+            quantity: item.quantity-1,
+            price: item.price * (item.quantity - 1) }        
+        }
+        return item; 
+      })
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -82,6 +115,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart,getCartTotal } = cartSlice.actions;
+export const { addToCart,getCartTotal,removeItem, increaseItemQuantity, decreaseItemQuantity } = cartSlice.actions;
 
 export default cartSlice.reducer;

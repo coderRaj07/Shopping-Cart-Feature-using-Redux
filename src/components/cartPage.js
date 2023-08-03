@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import { getCartTotal } from '../features/cartSlice';
+import { getCartTotal,removeItem, decreaseItemQuantity, increaseItemQuantity } from '../features/cartSlice';
 const CartPage = () => {
     const { cart, totalQuantity, totalPrice } = useSelector((state) => state.allCart)
 
@@ -39,7 +39,7 @@ const CartPage = () => {
                                                 <p>Color: blue</p>
                                                 <p>Size: M</p>
                                                 <button type="button" className="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                                                    title="Remove item">
+                                                    title="Remove item" onClick={()=>dispatch(removeItem(data.id))}>
                                                     <i className="fas fa-trash"></i>
                                                 </button>
 
@@ -48,7 +48,7 @@ const CartPage = () => {
                                             <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                                 <div className="d-flex mb-4" style={{ maxWidth: '300px' }}>
                                                     <button className="btn btn-primary px-3 me-2"
-                                                        onClick={() => this.parentNode.querySelector('input[type=number]').stepDown()}>
+                                                        onClick={() => dispatch(decreaseItemQuantity(data.id))}>
                                                         <i className="fas fa-minus"></i>
                                                     </button>
 
@@ -58,13 +58,13 @@ const CartPage = () => {
                                                     </div>
 
                                                     <button className="btn btn-primary px-3 ms-2"
-                                                        onClick={() => this.parentNode.querySelector('input[type=number]').stepUp()}>
+                                                        onClick={() => dispatch(increaseItemQuantity(data.id))}>
                                                         <i className="fas fa-plus"></i>
                                                    </button>
                                                 </div>
 
                                                 <p className="text-start text-md-center">
-                                                    <strong>{data.price * data.quantity}</strong>
+                                                    <strong>{data.price}</strong>
                                                 </p>
 
                                             </div>
